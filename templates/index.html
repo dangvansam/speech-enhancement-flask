@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denoise</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        background-color: #f0ffff;
+        
+    }
+    .custom_btn{
+        background-color: lightgreen;
+        border: none;
+        padding: 8px;
+        border-radius: 3px;
+        margin-top: 10px;
+        
+    }    
+</style>
+<script>
+    function addNoise(id){
+        window.location.href='/addnoise' + id
+    }
+    function removeNoise(){
+        window.location.href='/denoise'
+    }
+</script>
+<body>
+    <h2>Khử nhiễu</h2>
+    <form action="upload" method="post" enctype="multipart/form-data">
+        <input class="custom_btn" type="file" name="file" id="" accept="audio/*" style="padding: 5px;">
+        <input class="custom_btn" type="submit" value="Tải lên">
+    </form>
+
+    <div style="margin-top: 20px;">
+        <h4>Âm thanh gốc sạch:</h4>
+        <audio controls src="static/uploaded/{{filename}}" type="audio/wav">
+        </div>
+    <h4>Thêm nhiễu:</h4>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(0)">air_conditioner </button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(1)">car_horn</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(2)">children_playing</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(3)">dog_bark</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(4)">drilling</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(5)">engine_idling</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(6)">gun_shot</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(7)">jackhammer</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(8)">siren</button>
+    <button class="custom_btn" id="btn_addnoise" onclick="addNoise(9)">street_music</button>
+    <div style="margin-top: 20px;">
+        <h4>Âm thanh đã thêm nhiễu:</h4>
+        <audio controls src="static/uploaded/{{noise_filename}}" type="audio/wav">
+    </div>
+    
+    <button class="custom_btn" id="btn_addnoise" onclick="removeNoise()">Khử nhiễu</button>
+    <div style="margin-top: 20px;">
+        <h4>Âm thanh sau khi khử nhiễu:</h4>
+        <audio controls src="static/uploaded/{{denoise_filename}}" type="audio/wav">
+    </div>
+</body>
+</html>
