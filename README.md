@@ -18,5 +18,6 @@ python step3_predict.py
 ```
 python step3_runserver.py  
 ```
+mở link: `localhost:5000`
   
 ![alt text](frontend.PNG)
